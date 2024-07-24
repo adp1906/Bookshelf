@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct BookListView: View {
     @StateObject var viewModel = BookListViewModel()
     @State private var isSearchOverlayPresented = false

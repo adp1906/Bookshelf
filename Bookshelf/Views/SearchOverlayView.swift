@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct SearchOverlayView: View {
     @ObservedObject var viewModel: BookListViewModel
     @Binding var isPresented: Bool
