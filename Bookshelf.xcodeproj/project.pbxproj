@@ -21,6 +21,7 @@
 		ADED65A82C51501400232DA2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65A72C51501400232DA2 /* CoreDataManager.swift */; };
 		ADED65AA2C51522700232DA2 /* BookEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65A92C51522700232DA2 /* BookEntity+CoreDataClass.swift */; };
 		ADED65AC2C51525000232DA2 /* BookEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65AB2C51525000232DA2 /* BookEntity+CoreDataProperties.swift */; };
+		ADED65AE2C517A7200232DA2 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADED65AD2C517A7200232DA2 /* Keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		ADED65A72C51501400232DA2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		ADED65A92C51522700232DA2 /* BookEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		ADED65AB2C51525000232DA2 /* BookEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ADED65AD2C517A7200232DA2 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				ADED659F2C514A2C00232DA2 /* Models */,
 				ADED65A62C514FCF00232DA2 /* Managers */,
 				ADED65A22C514DA700232DA2 /* Bookshelf.xcdatamodeld */,
+				ADED65AD2C517A7200232DA2 /* Keys.plist */,
 				ADED65862C51475500232DA2 /* Assets.xcassets */,
 				ADED65882C51475500232DA2 /* Preview Content */,
 			);
@@ -219,6 +222,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADED65AE2C517A7200232DA2 /* Keys.plist in Resources */,
 				ADED658A2C51475500232DA2 /* Preview Assets.xcassets in Resources */,
 				ADED65872C51475500232DA2 /* Assets.xcassets in Resources */,
 			);

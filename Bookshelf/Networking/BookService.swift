@@ -12,8 +12,10 @@ class BookService {
     private let apiKey: String
     
     init() {
-        if let apiKey = Bundle.main.object(forInfoDictionaryKey: "GOOGLE_BOOKS_API_KEY") as? String {
-            self.apiKey = apiKey
+        if let path = Bundle.main.path(forResource: "Keys", ofType: "plist"),
+                   let keys = NSDictionary(contentsOfFile: path) as? [String: Any],
+                   let googleBooksAPIKey = keys["GoogleBooksAPIKey"] as? String {
+            self.apiKey = googleBooksAPIKey
         } else {
             fatalError("Google Books API Key is missing!")
         }

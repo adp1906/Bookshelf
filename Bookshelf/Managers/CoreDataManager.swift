@@ -13,7 +13,7 @@ class CoreDataManager {
     let persistentContainer: NSPersistentContainer
     
     private init() {
-        persistentContainer = NSPersistentContainer(name: "Bookcase")
+        persistentContainer = NSPersistentContainer(name: "Bookshelf")
         persistentContainer.loadPersistentStores { NSEntityDescription, error in
             if let error = error {
                 fatalError("Unable to initiate Core Data \(error)")
