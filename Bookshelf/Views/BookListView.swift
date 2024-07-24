@@ -10,6 +10,7 @@ import SwiftUI
 struct BookListView: View {
     @StateObject var viewModel = BookListViewModel()
     @State private var isSearchOverlayPresented = false
+    @State private var isGridView = false
     
     var body: some View {
         NavigationView {
@@ -26,29 +27,38 @@ struct BookListView: View {
                 }
                 .padding()
                 
-                List {
-                    ForEach(viewModel.books) { book in
-                        HStack {
-                            if let url = URL(string: book.imageUrl) {
-                                AsyncImage(url: url) { image in
-                                    image.resizable()
-                                        .frame(width: 50, height: 50)
-                                        .cornerRadius(8)
-                                } placeholder: {
-                                    ProgressView()
+                Toggle(isOn: $isGridView) {
+                    Text("Grid View")
+                }
+                .padding()
+                
+                if isGridView {
+                    BookGridView(books: viewModel.books)
+                } else {
+                    List {
+                        ForEach(viewModel.books) { book in
+                            HStack {
+                                if let url = URL(string: book.imageUrl) {
+                                    AsyncImage(url: url) { image in
+                                        image.resizable()
+                                            .frame(width: 50, height: 50)
+                                            .cornerRadius(8)
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                }
+                                
+                                VStack(alignment: .leading) {
+                                    Text(book.title)
+                                        .font(.headline)
+                                    Text(book.author)
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
                                 }
                             }
-                            
-                            VStack(alignment: .leading) {
-                                Text(book.title)
-                                    .font(.headline)
-                                Text(book.author)
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
-                            }
                         }
+                        .onDelete(perform: viewModel.deleteBook)
                     }
-                    .onDelete(perform: viewModel.deleteBook)
                 }
             }
             .navigationTitle("My Book Collection")
