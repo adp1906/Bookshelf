@@ -57,17 +57,35 @@ class BookListViewModel: ObservableObject {
     }
     
     func addBookToList(_ book: Book) {
-        if !books.contains(where: { $0.id == book.id }) {
-            let newBook = BookEntity(context: context)
-            newBook.id = book.id
-            newBook.title = book.title
-            newBook.author = book.author
-            newBook.imageUrl = book.imageUrl
-            newBook.isLoaned = false
-            
-            saveContext()
-            fetchBooks()
+        if books.contains(where: { $0.id == book.id }) {
+            return
         }
+        
+        let newBook = BookEntity(context: context)
+        newBook.id = book.id
+        newBook.title = book.title
+        newBook.author = book.author
+        newBook.publisher = book.publisher
+        newBook.publishedDate = book.publishedDate
+        newBook.summary = book.description
+        newBook.pageCount = book.pageCount as NSNumber?
+        newBook.mainCategory = book.mainCategory
+        newBook.averageRating = book.averageRating as NSNumber?
+        newBook.ratingsCount = book.ratingsCount as NSNumber?
+        newBook.language = book.language
+        
+        if let dimensions = book.dimensions {
+            newBook.dimensions = dimensions.toCoreDataObject(context: context)
+        }
+        
+        if let imageLinks = book.imageLinks {
+            newBook.imageLinks = imageLinks.toCoreDataObject(context: context)
+        }
+        
+        newBook.isLoaned = false
+        
+        saveContext()
+        fetchBooks()
         searchQuery = ""
     }
     

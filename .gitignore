@@ -5,3 +5,5 @@ Bookshelf.xcodeproj/project.xcworkspace/xcuserdata/aaronpeterson.xcuserdatad/Use
 /Bookshelf.xcodeproj/project.xcworkspace
 /Bookshelf.xcodeproj/project.xcworkspace/xcuserdata
 /Bookshelf.xcodeproj/project.xcworkspace/xcuserdata/aaronpeterson.xcuserdatad
+.DS_Store
+*.xcbkptlist

@@ -23,6 +23,12 @@
 		ADED65AC2C51525000232DA2 /* BookEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65AB2C51525000232DA2 /* BookEntity+CoreDataProperties.swift */; };
 		ADED65AE2C517A7200232DA2 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = ADED65AD2C517A7200232DA2 /* Keys.plist */; };
 		ADED65B22C51A4B400232DA2 /* BookGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65B12C51A4B400232DA2 /* BookGridView.swift */; };
+		ADED65B42C51B91700232DA2 /* BookDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65B32C51B91700232DA2 /* BookDetailsViewModel.swift */; };
+		ADED65B62C51BC0800232DA2 /* BookDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65B52C51BC0800232DA2 /* BookDetailsView.swift */; };
+		ADED65CB2C53129700232DA2 /* BookImageLinks+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65C72C53129700232DA2 /* BookImageLinks+CoreDataClass.swift */; };
+		ADED65CC2C53129700232DA2 /* BookImageLinks+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65C82C53129700232DA2 /* BookImageLinks+CoreDataProperties.swift */; };
+		ADED65CD2C53129700232DA2 /* BookDimensions+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65C92C53129700232DA2 /* BookDimensions+CoreDataClass.swift */; };
+		ADED65CE2C53129700232DA2 /* BookDimensions+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADED65CA2C53129700232DA2 /* BookDimensions+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +49,12 @@
 		ADED65AB2C51525000232DA2 /* BookEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ADED65AD2C517A7200232DA2 /* Keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		ADED65B12C51A4B400232DA2 /* BookGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookGridView.swift; sourceTree = "<group>"; };
+		ADED65B32C51B91700232DA2 /* BookDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsViewModel.swift; sourceTree = "<group>"; };
+		ADED65B52C51BC0800232DA2 /* BookDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetailsView.swift; sourceTree = "<group>"; };
+		ADED65C72C53129700232DA2 /* BookImageLinks+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookImageLinks+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ADED65C82C53129700232DA2 /* BookImageLinks+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookImageLinks+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		ADED65C92C53129700232DA2 /* BookDimensions+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDimensions+CoreDataClass.swift"; sourceTree = "<group>"; };
+		ADED65CA2C53129700232DA2 /* BookDimensions+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookDimensions+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				ADED65842C51475300232DA2 /* BookListView.swift */,
+				ADED65B52C51BC0800232DA2 /* BookDetailsView.swift */,
 				ADED65912C51488400232DA2 /* SearchOverlayView.swift */,
 				ADED65B12C51A4B400232DA2 /* BookGridView.swift */,
 			);
@@ -112,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				ADED65942C5148E000232DA2 /* BookListViewModel.swift */,
+				ADED65B32C51B91700232DA2 /* BookDetailsViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -155,6 +169,10 @@
 			children = (
 				ADED65A92C51522700232DA2 /* BookEntity+CoreDataClass.swift */,
 				ADED65AB2C51525000232DA2 /* BookEntity+CoreDataProperties.swift */,
+				ADED65C72C53129700232DA2 /* BookImageLinks+CoreDataClass.swift */,
+				ADED65C82C53129700232DA2 /* BookImageLinks+CoreDataProperties.swift */,
+				ADED65C92C53129700232DA2 /* BookDimensions+CoreDataClass.swift */,
+				ADED65CA2C53129700232DA2 /* BookDimensions+CoreDataProperties.swift */,
 			);
 			path = "Core Data";
 			sourceTree = "<group>";
@@ -238,15 +256,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADED65CB2C53129700232DA2 /* BookImageLinks+CoreDataClass.swift in Sources */,
 				ADED65B22C51A4B400232DA2 /* BookGridView.swift in Sources */,
 				ADED65A42C514DA700232DA2 /* Bookshelf.xcdatamodeld in Sources */,
+				ADED65CD2C53129700232DA2 /* BookDimensions+CoreDataClass.swift in Sources */,
+				ADED65CE2C53129700232DA2 /* BookDimensions+CoreDataProperties.swift in Sources */,
 				ADED65A12C514A4F00232DA2 /* Book.swift in Sources */,
 				ADED65852C51475300232DA2 /* BookListView.swift in Sources */,
+				ADED65B62C51BC0800232DA2 /* BookDetailsView.swift in Sources */,
 				ADED65952C5148E000232DA2 /* BookListViewModel.swift in Sources */,
 				ADED659C2C5149A100232DA2 /* BookService.swift in Sources */,
 				ADED65AC2C51525000232DA2 /* BookEntity+CoreDataProperties.swift in Sources */,
 				ADED65AA2C51522700232DA2 /* BookEntity+CoreDataClass.swift in Sources */,
+				ADED65B42C51B91700232DA2 /* BookDetailsViewModel.swift in Sources */,
 				ADED65982C51492A00232DA2 /* SearchBar.swift in Sources */,
+				ADED65CC2C53129700232DA2 /* BookImageLinks+CoreDataProperties.swift in Sources */,
 				ADED65832C51475300232DA2 /* BookshelfApp.swift in Sources */,
 				ADED659E2C5149DD00232DA2 /* GoogleBooksResponse.swift in Sources */,
 				ADED65A82C51501400232DA2 /* CoreDataManager.swift in Sources */,
