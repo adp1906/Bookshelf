@@ -38,9 +38,10 @@ struct BookListView: View {
                     List {
                         ForEach(viewModel.books) { book in
                             HStack {
-                                if let url = URL(string: book.imageUrl) {
+                                if let url = URL(string: book.imageLinks?.thumbnail ?? "") {
                                     AsyncImage(url: url) { image in
                                         image.resizable()
+                                            .aspectRatio(contentMode: .fit) 
                                             .frame(width: 50, height: 50)
                                             .cornerRadius(8)
                                     } placeholder: {

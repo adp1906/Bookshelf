@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22G720" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="BookDimensions" representedClassName="BookDimensions" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="String"/>
+        <attribute name="thickness" optional="YES" attributeType="String"/>
+        <attribute name="width" optional="YES" attributeType="String"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookEntity" inverseName="dimensions" inverseEntity="BookEntity"/>
+    </entity>
     <entity name="BookEntity" representedClassName="BookEntity" syncable="YES">
         <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="averageRating" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="imageUrl" optional="YES" attributeType="String"/>
         <attribute name="isLoaned" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="language" optional="YES" attributeType="String"/>
+        <attribute name="mainCategory" optional="YES" attributeType="String"/>
+        <attribute name="pageCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="publishedDate" optional="YES" attributeType="String"/>
+        <attribute name="publisher" optional="YES" attributeType="String"/>
+        <attribute name="ratingsCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="dimensions" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookDimensions" inverseName="book" inverseEntity="BookDimensions"/>
+        <relationship name="imageLinks" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookImageLinks" inverseName="book" inverseEntity="BookImageLinks"/>
+    </entity>
+    <entity name="BookImageLinks" representedClassName="BookImageLinks" syncable="YES">
+        <attribute name="extraLarge" optional="YES" attributeType="String"/>
+        <attribute name="large" optional="YES" attributeType="String"/>
+        <attribute name="medium" optional="YES" attributeType="String"/>
+        <attribute name="small" optional="YES" attributeType="String"/>
+        <attribute name="smallThumbnail" optional="YES" attributeType="String"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String"/>
+        <relationship name="book" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BookEntity" inverseName="imageLinks" inverseEntity="BookEntity"/>
     </entity>
 </model>
