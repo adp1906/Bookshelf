@@ -25,9 +25,26 @@ struct VolumeInfo: Codable {
     let publisher: String?
     let publishedDate: String?
     let description: String?
+    let pageCount: Int?
+    let dimensions: Dimensions?
+    let mainCategory: String?
+    let averageRating: Double?
+    let ratingsCount: Int?
     let imageLinks: ImageLinks?
+    let language: String?
 }
 
 struct ImageLinks: Codable {
+    let smallThumbnail: String?
     let thumbnail: String?
+    let small: String?
+    let medium: String?
+    let large: String?
+    let extraLarge: String?
+}
+
+struct Dimensions: Codable {
+    let height: String?
+    let width: String?
+    let thickness: String?
 }

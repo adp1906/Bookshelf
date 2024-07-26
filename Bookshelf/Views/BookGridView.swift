@@ -15,7 +15,7 @@ struct BookGridView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(books) { book in
-                    if let url = URL(string: book.imageUrl) {
+                    if let url = URL(string: book.imageLinks?.thumbnail ?? "") {
                         AsyncImage(url: url) { image in
                             image.resizable()
                                 .aspectRatio(contentMode: .fit)
@@ -37,7 +37,14 @@ struct BookGridView_Previews: PreviewProvider {
         BookGridView(books: [Book(id: UUID(),
                                   title: "Sample Book",
                                   author: "Sample Author",
-                                  imageUrl: "",
+                                  publisher: "",
+                                  publishedDate: "",
+                                  description: "",
+                                  pageCount: 100,
+                                  mainCategory: "",
+                                  averageRating: 5.0,
+                                  ratingsCount: 100,
+                                  language: "",
                                   isLoaned: false)])
     }
 }
