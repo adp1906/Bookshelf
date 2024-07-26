@@ -7,3 +7,5 @@ Bookshelf.xcodeproj/project.xcworkspace/xcuserdata/aaronpeterson.xcuserdatad/Use
 /Bookshelf.xcodeproj/project.xcworkspace/xcuserdata/aaronpeterson.xcuserdatad
 .DS_Store
 *.xcbkptlist
+*.xcuserstate
+Bookshelf.xcodeproj/project.xcworkspace/xcuserdata/aaronpeterson.xcuserdatad/UserInterfaceState.xcuserstate
