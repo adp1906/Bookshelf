@@ -73,6 +73,7 @@ class BookListViewModel: ObservableObject {
         newBook.averageRating = book.averageRating as NSNumber?
         newBook.ratingsCount = book.ratingsCount as NSNumber?
         newBook.language = book.language
+        newBook.quantity = 1 as NSNumber
         
         if let dimensions = book.dimensions {
             newBook.dimensions = dimensions.toCoreDataObject(context: context)
