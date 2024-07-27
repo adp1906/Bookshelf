@@ -11,6 +11,7 @@ struct BookListView: View {
     @StateObject var viewModel = BookListViewModel()
     @State private var isSearchOverlayPresented = false
     @State private var isGridView = false
+    @State private var selectedBook: Book?
     
     var body: some View {
         NavigationView {
@@ -33,29 +34,32 @@ struct BookListView: View {
                 .padding()
                 
                 if isGridView {
-                    BookGridView(books: viewModel.books)
+                    BookGridView(viewModel: BookGridViewModel(books: viewModel.books))
                 } else {
                     List {
                         ForEach(viewModel.books) { book in
-                            HStack {
-                                if let url = URL(string: book.imageLinks?.thumbnail ?? "") {
-                                    AsyncImage(url: url) { image in
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fit) 
-                                            .frame(width: 50, height: 50)
-                                            .cornerRadius(8)
-                                    } placeholder: {
-                                        ProgressView()
+                            NavigationLink(destination: BookDetailsView(viewModel: BookDetailsViewModel(book: book, context: viewModel.context))) {
+                                HStack {
+                                    if let url = URL(string: book.imageLinks?.thumbnail ?? "") {
+                                        AsyncImage(url: url) { image in
+                                            image.resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 50, height: 50)
+                                                .cornerRadius(8)
+                                        } placeholder: {
+                                            ProgressView()
+                                        }
+                                    }
+                                    
+                                    VStack(alignment: .leading) {
+                                        Text(book.title)
+                                            .font(.headline)
+                                        Text(book.author)
+                                            .font(.subheadline)
+                                            .foregroundColor(.secondary)
                                     }
                                 }
-                                
-                                VStack(alignment: .leading) {
-                                    Text(book.title)
-                                        .font(.headline)
-                                    Text(book.author)
-                                        .font(.subheadline)
-                                        .foregroundColor(.secondary)
-                                }
+                                .contentShape(Rectangle())
                             }
                         }
                         .onDelete(perform: viewModel.deleteBook)
