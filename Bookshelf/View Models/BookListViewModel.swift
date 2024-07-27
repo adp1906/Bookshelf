@@ -16,7 +16,7 @@ class BookListViewModel: ObservableObject {
 
     private var cancellables = Set<AnyCancellable>()
     private let bookService = BookService()
-    private let context: NSManagedObjectContext
+    let context: NSManagedObjectContext
     
     init(context: NSManagedObjectContext = CoreDataManager.shared.context) {
         self.context = context

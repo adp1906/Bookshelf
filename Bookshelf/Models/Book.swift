@@ -23,6 +23,8 @@ struct Book: Identifiable {
     let dimensions: BookObjectDimensions?
     let imageLinks: BookObjectImageLinks?
     var isLoaned: Bool = false
+    var isMissing: Bool = false
+    var quantity: Int = 1
     
     // Initializer for creating a new book
     init(id: UUID = UUID(),
@@ -38,7 +40,9 @@ struct Book: Identifiable {
          language: String,
          dimensions: BookObjectDimensions? = nil,
          imageLinks: BookObjectImageLinks? = nil,
-         isLoaned: Bool = false) {
+         isLoaned: Bool = false,
+         isMissing: Bool = false,
+         quantity: Int = 1) {
         self.id = id
         self.title = title
         self.author = author
@@ -53,6 +57,8 @@ struct Book: Identifiable {
         self.dimensions = dimensions
         self.imageLinks = imageLinks
         self.isLoaned = isLoaned
+        self.isMissing = isMissing
+        self.quantity = quantity
     }
     
     // Initializer for creating a book from a BookEntity
@@ -71,6 +77,8 @@ struct Book: Identifiable {
         self.imageLinks = entity.imageLinks != nil ? BookObjectImageLinks(entity: entity.imageLinks!) : nil
         self.language = entity.language ?? ""
         self.isLoaned = entity.isLoaned
+        self.isMissing = entity.isMissing
+        self.quantity = entity.quantity?.intValue ?? 1
     }
 }
 
