@@ -60,15 +60,23 @@ struct BookDetailsView: View {
                 .padding(.top)
                 
                 HStack {
-                    Button(action: {
-                        viewModel.toggleMissingStatus()
-                    }) {
-                        Text(viewModel.book.isMissing ? "Mark as Not Missing": "Mark as Missing")
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(viewModel.book.isMissing ? Color.red : Color.blue)
-                            .cornerRadius(8)
-                    }
+                    Toggle(isOn: Binding(
+                        get: { viewModel.book.isLoaned },
+                        set: { newValue in
+                            viewModel.toggleLoanedStatus()
+                        })) {
+                            Text("Loaned")
+                        }
+                        .disabled(viewModel.book.isMissing)
+                    
+                    Toggle(isOn: Binding(
+                        get: { viewModel.book.isMissing },
+                        set: { newValue in
+                            viewModel.toggleMissingStatus()
+                        })) {
+                            Text("Missing")
+                        }
+                        .disabled(viewModel.book.isLoaned)
                 }
                 .padding(.top)
                 
@@ -137,6 +145,6 @@ struct BookDetailsView_Previews: PreviewProvider {
                                                                 isLoaned: false,
                                                                 isMissing: false,
                                                                 quantity: 1),
-                                                     context: CoreDataManager.shared.context))
+                                                        context: CoreDataManager.shared.context, onBookChanged: {}))
     }
 }

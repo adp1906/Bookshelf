@@ -31,7 +31,7 @@ class BookListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
-    private func fetchBooks() {
+    func fetchBooks() {
         let request: NSFetchRequest<BookEntity> = BookEntity.fetchRequest()
         
         do {
