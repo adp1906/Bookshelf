@@ -22,9 +22,18 @@ struct BookGridView: View {
                                     .aspectRatio(contentMode: .fit)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                     .cornerRadius(8)
+                                    .border(book.isMissing ? Color.red : Color.clear, width: 5)
                             } placeholder: {
                                 ProgressView()
                             }
+                        } else {
+                            Image(systemName: "book")
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .cornerRadius(8)
+                                .border(book.isMissing ? Color.red : Color.clear, width: 5)
+                            
                         }
                     }
                 }

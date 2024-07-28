@@ -54,14 +54,14 @@ struct BookDetailsView: View {
                 HStack {
                     Text("Page Count: \(viewModel.book.pageCount)")
                     Spacer()
-                    Text("Rating: \(viewModel.book.averageRating)/5 (\(viewModel.book.ratingsCount) reviews)")
+                    Text("Rating: \(String(format: "%.2f", viewModel.book.averageRating))/5 (\(viewModel.book.ratingsCount) reviews)")
                 }
                 .font(.subheadline)
                 .padding(.top)
                 
                 HStack {
                     Button(action: {
-                        viewModel.toggleLoanedStatus()
+                        viewModel.toggleMissingStatus()
                     }) {
                         Text(viewModel.book.isMissing ? "Mark as Not Missing": "Mark as Missing")
                             .foregroundColor(.white)
