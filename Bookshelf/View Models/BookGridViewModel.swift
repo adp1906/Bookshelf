@@ -18,5 +18,17 @@ class BookGridViewModel: ObservableObject {
     init(books: [Book], context: NSManagedObjectContext = CoreDataManager.shared.context) {
         self.books = books
         self.context = context
+        fetchBooks()
+    }
+    
+    func fetchBooks() {
+        let request: NSFetchRequest<BookEntity> = BookEntity.fetchRequest()
+        
+        do {
+            let bookEntities = try context.fetch(request)
+            books = bookEntities.map { Book(entity: $0) }
+        } catch {
+            print("Error fetching books: \(error)")
+        }
     }
 }

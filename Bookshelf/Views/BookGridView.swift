@@ -15,14 +15,16 @@ struct BookGridView: View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 20) {
                 ForEach(viewModel.books) { book in
-                    NavigationLink(destination: BookDetailsView(viewModel: BookDetailsViewModel(book: book, context: viewModel.context))) {
+                    NavigationLink(destination: BookDetailsView(viewModel: BookDetailsViewModel(book: book, context: viewModel.context, onBookChanged: {
+                        viewModel.fetchBooks()
+                    }))) {
                         if let url = URL(string: book.imageLinks?.thumbnail ?? "") {
                             AsyncImage(url: url) { image in
                                 image.resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                                     .cornerRadius(8)
-                                    .border(book.isMissing ? Color.red : Color.clear, width: 5)
+                                    .border(book.isMissing ? Color.red : (book.isLoaned ? Color.yellow : Color.clear), width: 5)
                             } placeholder: {
                                 ProgressView()
                             }
@@ -32,8 +34,7 @@ struct BookGridView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .cornerRadius(8)
-                                .border(book.isMissing ? Color.red : Color.clear, width: 5)
-                            
+                                .border(book.isMissing ? Color.red : (book.isLoaned ? Color.yellow : Color.clear), width: 5)
                         }
                     }
                 }

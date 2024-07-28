@@ -38,7 +38,9 @@ struct BookListView: View {
                 } else {
                     List {
                         ForEach(viewModel.books) { book in
-                            NavigationLink(destination: BookDetailsView(viewModel: BookDetailsViewModel(book: book, context: viewModel.context))) {
+                            NavigationLink(destination: BookDetailsView(viewModel: BookDetailsViewModel(book: book, context: viewModel.context, onBookChanged: {
+                                viewModel.fetchBooks()
+                            }))) {
                                 HStack {
                                     if let url = URL(string: book.imageLinks?.thumbnail ?? "") {
                                         AsyncImage(url: url) { image in
@@ -57,6 +59,16 @@ struct BookListView: View {
                                         Text(book.author)
                                             .font(.subheadline)
                                             .foregroundColor(.secondary)
+                                    }
+                                    
+                                    if book.isMissing {
+                                        Image(systemName: "exclamationmark.triangle.fill")
+                                            .foregroundColor(.red)
+                                    }
+                                    
+                                    if book.isLoaned {
+                                        Image(systemName: "book.fill")
+                                            .foregroundColor(.yellow)
                                     }
                                 }
                                 .contentShape(Rectangle())

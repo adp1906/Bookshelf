@@ -12,19 +12,27 @@ class BookDetailsViewModel: ObservableObject {
     @Published var book: Book
     @Published var shouldDismiss = false
     private let context: NSManagedObjectContext
+    var onBookChanged: (() -> Void)?
     
-    init(book: Book, context: NSManagedObjectContext) {
+    init(book: Book, context: NSManagedObjectContext, onBookChanged: (() -> Void)?) {
         self.book = book
         self.context = context
+        self.onBookChanged = onBookChanged
     }
     
     func toggleLoanedStatus() {
         book.isLoaned.toggle()
+        if book.isLoaned {
+            book.isMissing = false
+        }
         saveChanges()
     }
     
     func toggleMissingStatus() {
         book.isMissing.toggle()
+        if book.isMissing {
+            book.isLoaned = false
+        }
         saveChanges()
     }
     
@@ -50,6 +58,7 @@ class BookDetailsViewModel: ObservableObject {
                 context.delete(bookEntity)
                 try context.save()
                 shouldDismiss = true
+                onBookChanged?()
             }
         } catch {
             print("Error deleting book: \(error)")
@@ -67,6 +76,7 @@ class BookDetailsViewModel: ObservableObject {
                 bookEntity.isMissing = book.isMissing
                 bookEntity.quantity = NSNumber(value: book.quantity)
                 try context.save()
+                onBookChanged?()
             }
         } catch {
             print("Error saving changes: \(error)")
