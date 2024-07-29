@@ -10,6 +10,7 @@ import SwiftUI
 struct BookDetailsView: View {
     @ObservedObject var viewModel: BookDetailsViewModel
     @Environment(\.presentationMode) var presentationMode
+    @State private var showAlert = false
     
     var body: some View {
         ScrollView {
@@ -107,13 +108,20 @@ struct BookDetailsView: View {
                 .padding(.top)
                 
                 Button(action: {
-                    viewModel.deleteBook()
+                    showAlert = true
                 }) {
                     Text("Delete Book")
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.red)
                         .cornerRadius(8)
+                }
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Delete Book"),
+                          message: Text("Are you sure you want to delete this book? This action cannot be undone."), primaryButton: .destructive(Text("Delete")){
+                        viewModel.deleteBook()
+                    },
+                          secondaryButton: .cancel())
                 }
                 .padding(.top)
             }
